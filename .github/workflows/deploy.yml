@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  PROJECT_ID: voltaic-bridge-292822
   REGION: europe-west1
   SERVICE_NAME: spring-boot-demo
   REPOSITORY: default
@@ -45,7 +45,7 @@ jobs:
 
       - name: Build GraalVM native image
         run: |
-          ./mvnw -B spring-boot:build-image
+          ./mvnw -B -Pnative spring-boot:build-image
 
       - name: Tag image for Artifact Registry
         run: |
@@ -65,8 +65,3 @@ jobs:
             --image="${REMOTE_IMAGE}" \
             --region="${{ env.REGION }}" \
             --project="${{ env.PROJECT_ID }}"
-
-      - name: Show service URL
-        run: |
-          echo "Deployment complete!"
-          echo "Service URL: https://${{ env.SERVICE_NAME }}-1089738547069.${{ env.REGION }}.run.app"

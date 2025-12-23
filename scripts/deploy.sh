@@ -33,4 +33,3 @@ gcloud run deploy "${SERVICE_NAME}" \
 
 echo ""
 echo "=== Deployment complete! ==="
-echo "Service URL: https://${SERVICE_NAME}-1089738547069.${REGION}.run.app"
