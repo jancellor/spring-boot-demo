@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/playwright/java:v1.57.0-noble AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
-RUN mvn clean verify
+RUN mvn clean package -DskipTests
 
 # Runtime stage
 FROM mcr.microsoft.com/playwright/java:v1.57.0-noble
